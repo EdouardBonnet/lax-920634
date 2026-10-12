@@ -1,24 +1,23 @@
-import Lax920634.MargulisConstruction
+import Lax920634.ZigZagConstruction
 
 /-!
 ---
 title: The Explicit Graphs Are Subcubic
 type: theorem
 ---
-Every graph $H_m$ is subcubic. In fact the construction is cubic: its two
-cycle neighbors and its opposite-port matching neighbor are distinct.
-This includes modulus one.
+Every member $H_k$ of the specified zig-zag and path-replacement family is
+subcubic. A port has at most two neighbors inside its path and one neighbor
+across the regular graph's edge involution.
 
 # Formalization notes
 
-The public statement records the degree bound needed in the two existence
-theorems. Exact neighborhood formulas and the involution calculation belong
-to its proof.
+The statement concerns the precise executable construction on `Fin (order k)`.
+Self-loops and coincident edges are removed by the simple graph definition.
 -/
 
 namespace Lax920634.SubcubicConstruction
 
-/-- Every member of the explicit family has maximum degree at most three. -/
-axiom subcubic (m : ℕ) : EdgeExpansion.IsSubcubic (MargulisConstruction.graph m)
+/-- The specified deterministic family has maximum degree at most three. -/
+axiom subcubic (k : ℕ) : EdgeExpansion.IsSubcubic (ZigZagConstruction.graph k)
 
 end Lax920634.SubcubicConstruction

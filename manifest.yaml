@@ -4,4 +4,35 @@ leanVersion: "v4.33.0"
 mathlibVersion: "db584cd6d46c92f209a44c0f1c829460d327499d"
 title: "Explicit Subcubic Expanders and Linear Treewidth"
 authors: []
-bibEntries: []
+bibEntries:
+  - |
+    @article{RVW2002,
+      author = {Reingold, Omer and Vadhan, Salil and Wigderson, Avi},
+      title = {Entropy waves, the zig-zag graph product, and new constant-degree expanders},
+      journal = {Annals of Mathematics},
+      volume = {155}, number = {1}, pages = {157--187}, year = {2002},
+      doi = {10.2307/3062153},
+      url = {https://annals.math.princeton.edu/2002/155-1/p04}
+    }
+  - |
+    @article{HLW2006,
+      author = {Hoory, Shlomo and Linial, Nathan and Wigderson, Avi},
+      title = {Expander graphs and their applications},
+      journal = {Bulletin of the American Mathematical Society},
+      volume = {43}, number = {4}, pages = {439--561}, year = {2006},
+      url = {https://www.math.ias.edu/~avi/PUBLICATIONS/MYPAPERS/HLW06/hlw06.pdf}
+    }
+  - |
+    @misc{Lax323828,
+      title = {Lax323828: registered expander and polynomial-time computation development},
+      year = {2026},
+      note = {Pinned revision 6902a04ba0c6ba68d1c390a410b2dbc5165cdfdb},
+      url = {https://github.com/EdouardBonnet/lax-253009/tree/6902a04ba0c6ba68d1c390a410b2dbc5165cdfdb}
+    }
+  - |
+    @misc{Lax228581,
+      title = {Lax228581: registered tree-decomposition and treewidth definitions},
+      year = {2026},
+      note = {Pinned revision 1e200ffac8b69e63b802f0aaf1dfee79561ca39a},
+      url = {https://github.com/lax-archive/lax-submissions/tree/1e200ffac8b69e63b802f0aaf1dfee79561ca39a/twin-width-treewidth-separation-v433}
+    }

@@ -34,7 +34,7 @@ def HasEdgeExpansionAtLeast {V : Type} [Fintype V]
     h * (S.ncard : ℚ) ≤ ((edgeBoundary G S).ncard : ℚ)
 
 /-- Every vertex has at most three distinct neighbors. -/
-def IsSubcubic {V : Type} (G : SimpleGraph V) : Prop :=
+def IsSubcubic {V : Type} [Finite V] (G : SimpleGraph V) : Prop :=
   ∀ v, (G.neighborSet v).ncard ≤ 3
 
 end Lax920634.EdgeExpansion
