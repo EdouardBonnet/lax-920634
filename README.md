@@ -115,5 +115,5 @@ lax serve --port 8123
 ```
 
 The local preview is at <http://localhost:8123/>. Proof replay checks the
-compiled declarations with Lean's kernel. The submission has been prepared
-locally; it has not been submitted or registered in the archive.
+compiled declarations with Lean's kernel. Run `lax submit` to publish a
+replaceable draft in the archive.
