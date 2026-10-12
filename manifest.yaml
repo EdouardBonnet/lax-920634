@@ -36,3 +36,11 @@ bibEntries:
       note = {Pinned revision 1e200ffac8b69e63b802f0aaf1dfee79561ca39a},
       url = {https://github.com/lax-archive/lax-submissions/tree/1e200ffac8b69e63b802f0aaf1dfee79561ca39a/twin-width-treewidth-separation-v433}
     }
+  - |
+    @misc{Lax808846,
+      author = {Dreier, Jan and Claude Fable 5},
+      title = {The Word RAM},
+      year = {2026},
+      note = {Registered Lax808846; pinned revision 9394e531cc51cb67a0214bca3f9264dfe97ba5c7},
+      url = {https://laxarchive.org/lax-808846/}
+    }

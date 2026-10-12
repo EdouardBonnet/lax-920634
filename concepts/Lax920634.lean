@@ -5,6 +5,7 @@ import Lax920634.ExpansionTreewidth
 import Lax920634.ExplicitExpansion
 import Lax920634.ExplicitTreewidth
 import Lax920634.GraphEncoding
+import Lax920634.LinearConstruction
 import Lax920634.PathExpansion
 import Lax920634.PathReplacement
 import Lax920634.PolynomialConstruction
@@ -13,4 +14,6 @@ import Lax920634.SeedRotation
 import Lax920634.SeedSearch
 import Lax920634.SubcubicConstruction
 import Lax920634.TreewidthExistence
+import Lax920634.WordEncoding
+import Lax920634.WordEncodingCorrectness
 import Lax920634.ZigZagConstruction
