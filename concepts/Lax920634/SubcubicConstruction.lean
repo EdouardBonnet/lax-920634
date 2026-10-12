@@ -3,7 +3,7 @@ import Lax920634.ZigZagConstruction
 /-!
 ---
 title: The Explicit Graphs Are Subcubic
-type: theorem
+type: lemma
 ---
 Every member $H_k$ of the specified zig-zag and path-replacement family is
 subcubic. A port has at most two neighbors inside its path and one neighbor
@@ -17,7 +17,9 @@ Self-loops and coincident edges are removed by the simple graph definition.
 
 namespace Lax920634.SubcubicConstruction
 
+open ZigZagConstruction EdgeExpansion
+
 /-- The specified deterministic family has maximum degree at most three. -/
-axiom subcubic (k : ℕ) : EdgeExpansion.IsSubcubic (ZigZagConstruction.graph k)
+axiom subcubic (k : ℕ) : IsSubcubic (graph k)
 
 end Lax920634.SubcubicConstruction

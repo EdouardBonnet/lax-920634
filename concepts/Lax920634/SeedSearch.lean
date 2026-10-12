@@ -25,6 +25,8 @@ The search is implemented by a finite list scan and uses no choice operation.
 
 namespace Lax920634.SeedSearch
 
+open Function
+
 /-- A table of thirty maps on a numbered finite vertex set. -/
 abbrev Table (n : ℕ) := Fin 30 → Fin n → Fin n
 
@@ -34,7 +36,7 @@ def escape {n : ℕ} (f : Fin n → Fin n) (S : Finset (Fin n)) : ℕ :=
 
 /-- Each row is a permutation, and some row moves at least a tenth of each small set out. -/
 abbrev GoodTable {n : ℕ} (T : Table n) : Prop :=
-  (∀ i, Function.Bijective (T i)) ∧
+  (∀ i, Bijective (T i)) ∧
     ∀ S : Finset (Fin n), 2 * S.card ≤ n →
       ∃ i : Fin 30, S.card ≤ 10 * escape (T i) S
 

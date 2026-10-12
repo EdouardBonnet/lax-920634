@@ -4,7 +4,7 @@ import Mathlib.Computability.TuringMachine.Computable
 /-!
 ---
 title: The Explicit Construction Runs in Polynomial Time
-type: theorem
+type: lemma
 ---
 The specified graph-table constructor is computed by one deterministic
 Turing machine in polynomial time in the unary requested order. Its output
@@ -23,8 +23,10 @@ of the requested order.
 
 namespace Lax920634.PolynomialConstruction
 
+open GraphEncoding Turing
+
 /-- One deterministic polynomial-time machine computes the specified graph constructor. -/
 axiom polynomial_time :
-  Nonempty (Turing.TM2ComputableInPolyTime id id GraphEncoding.construct)
+  Nonempty (TM2ComputableInPolyTime id id construct)
 
 end Lax920634.PolynomialConstruction

@@ -3,7 +3,7 @@ import Lax920634.SeedSearch
 /-!
 ---
 title: The Deterministic Seed Search Succeeds
-type: theorem
+type: lemma
 ---
 At every finite order the deterministic table scan finds thirty permutations
 such that, for every set of at most half the vertices, some permutation
@@ -18,7 +18,9 @@ every candidate. The total default in the constructor is never needed.
 
 namespace Lax920634.SeedCorrectness
 
+open SeedSearch
+
 /-- The specified finite seed search returns a successful permutation table. -/
-axiom table_good (n : ℕ) : SeedSearch.GoodTable (SeedSearch.selectedTable n)
+axiom table_good (n : ℕ) : GoodTable (selectedTable n)
 
 end Lax920634.SeedCorrectness

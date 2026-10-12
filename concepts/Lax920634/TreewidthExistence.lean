@@ -20,9 +20,11 @@ enough graph to absorb the additive one in the general treewidth inequality.
 
 namespace Lax920634.TreewidthExistence
 
+open ZigZagConstruction EdgeExpansion Lax228581.Treewidth
+
 /-- Arbitrarily large subcubic graphs have a fixed linear lower bound on treewidth. -/
 axiom exists_subcubic_linear_treewidth (lower : ℕ) :
-  ∃ n : ℕ, ∃ G : SimpleGraph (Fin n), lower ≤ n ∧ EdgeExpansion.IsSubcubic G ∧
-    n ≤ (48 * ZigZagConstruction.degree + 2) * Lax228581.Treewidth.treewidth G
+  ∃ n : ℕ, ∃ G : SimpleGraph (Fin n), lower ≤ n ∧ IsSubcubic G ∧
+    n ≤ (48 * degree + 2) * treewidth G
 
 end Lax920634.TreewidthExistence

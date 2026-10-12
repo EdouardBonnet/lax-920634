@@ -3,7 +3,7 @@ import Lax920634.PathReplacement
 /-!
 ---
 title: Path Replacement Preserves Uniform Expansion
-type: theorem
+type: lemma
 ---
 Suppose a degree-$d$ regular port involution has at least a quarter of the
 degree times the smaller cut side in boundary darts, and $d\ge2$.
@@ -23,11 +23,13 @@ edges and path edges.
 
 namespace Lax920634.PathExpansion
 
+open PathReplacement EdgeExpansion Function
+
 /-- An expanding regular port involution yields a uniformly expanding path replacement. -/
 axiom replacement_expansion {n d : ℕ} (R : Fin n × Fin d → Fin n × Fin d)
-    (hR : Function.Involutive R) (hd : 2 ≤ d)
+    (hR : Involutive R) (hd : 2 ≤ d)
     (hbase : ∀ U : Set (Fin n),
-      d * min U.ncard (n - U.ncard) ≤ 4 * (PathReplacement.baseCut R U).ncard) :
-  EdgeExpansion.HasEdgeExpansionAtLeast (PathReplacement.graph R) (1 / (8 * (d : ℚ)))
+      d * min U.ncard (n - U.ncard) ≤ 4 * (baseCut R U).ncard) :
+  HasEdgeExpansionAtLeast (graph R) (1 / (8 * (d : ℚ)))
 
 end Lax920634.PathExpansion

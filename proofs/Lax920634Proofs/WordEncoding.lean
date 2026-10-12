@@ -38,7 +38,7 @@ The complete numerical row scan has the stated length and header. Its
 endpoints agree with the original matching formula and remain in range.
 Substituting these entries into the decoder gives the original graph.
 -/
-theorem table_correct (k : ℕ) :
+lemma table_correct (k : ℕ) :
     (table k).head? = some (order k) ∧ (table k).length = order k+1 ∧
     (∀ j < order k, ((table k).tail[j]?).getD 0 < order k) ∧
     decode (order k) (table k) = graph k := by

@@ -3,7 +3,9 @@ id: lax-920634
 leanVersion: "v4.33.0"
 mathlibVersion: "db584cd6d46c92f209a44c0f1c829460d327499d"
 title: "Explicit Subcubic Expanders and Linear Treewidth"
-authors: []
+authors:
+  - name: "Édouard Bonnet"
+  - name: "Codex 6.1"
 bibEntries:
   - |
     @article{RVW2002,

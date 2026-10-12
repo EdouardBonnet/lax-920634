@@ -20,17 +20,19 @@ rather than unary coordinates. The requested order is supplied as one word.
 
 namespace Lax920634.WordEncoding
 
+open ZigZagConstruction GraphEncoding
+
 /-- The complete matching table, with its graph order as a header. -/
-def table (k : ℕ) : List ℕ := ZigZagConstruction.order k ::
-  (List.range (ZigZagConstruction.order k)).map (ZigZagConstruction.matchingNeighbor k)
+def table (k : ℕ) : List ℕ := order k ::
+  (List.range (order k)).map (matchingNeighbor k)
 
 /-- Construct the word encoding for the same size selector as the binary constructor. -/
-def construct (n : ℕ) : List ℕ := table (GraphEncoding.selectedLevel n)
+def construct (n : ℕ) : List ℕ := table (selectedLevel n)
 
 /-- Decode the matching table at its declared graph order. Path edges are determined by row numbers. -/
 def decode (n : ℕ) (tape : List ℕ) : SimpleGraph (Fin n) :=
   SimpleGraph.fromRel (fun u v =>
-    (u.val / ZigZagConstruction.degree = v.val / ZigZagConstruction.degree ∧ u.val+1 = v.val) ∨
+    (u.val / degree = v.val / degree ∧ u.val+1 = v.val) ∨
       v.val = (tape.tail[u.val]?).getD 0)
 
 end Lax920634.WordEncoding

@@ -25,7 +25,7 @@ conclusion: Lax920634.SeedCorrectness.table_good
 ---
 A finite counting argument guarantees a good table; exhaustive numerical enumeration finds it.
 -/
-theorem SeedCorrectness_table_good (n : ℕ) : SeedSearch.GoodTable (SeedSearch.selectedTable n) := by
+lemma SeedCorrectness_table_good (n : ℕ) : SeedSearch.GoodTable (SeedSearch.selectedTable n) := by
   exact Seed.selectedTable_good n
 
 /--
@@ -34,7 +34,7 @@ conclusion: Lax920634.PathExpansion.replacement_expansion
 ---
 Count crossing edges in partial clouds and base edges leaving full clouds.
 -/
-theorem PathExpansion_replacement_expansion {n d : ℕ} (R : Fin n × Fin d → Fin n × Fin d)
+lemma PathExpansion_replacement_expansion {n d : ℕ} (R : Fin n × Fin d → Fin n × Fin d)
     (hR : Function.Involutive R) (hd : 2 ≤ d)
     (hbase : ∀ U : Set (Fin n),
       d * min U.ncard (n - U.ncard) ≤ 4 * (PathReplacement.baseCut R U).ncard) :
@@ -47,7 +47,7 @@ conclusion: Lax920634.SubcubicConstruction.subcubic
 ---
 Identify the executable graph with path replacement. Each port has two path neighbors and at most one paired neighbor.
 -/
-theorem SubcubicConstruction_subcubic (k : ℕ) : EdgeExpansion.IsSubcubic (ZigZagConstruction.graph k) := by
+lemma SubcubicConstruction_subcubic (k : ℕ) : EdgeExpansion.IsSubcubic (ZigZagConstruction.graph k) := by
   exact Family.subcubic k
 
 /--
@@ -56,7 +56,7 @@ conclusion: Lax920634.ExplicitExpansion.expansion
 ---
 The powered seed has spectral bound one fifth. Zig-zag iteration gives bound two fifths, and path replacement gives the stated edge expansion.
 -/
-theorem ExplicitExpansion_expansion (k : ℕ) : EdgeExpansion.HasEdgeExpansionAtLeast
+lemma ExplicitExpansion_expansion (k : ℕ) : EdgeExpansion.HasEdgeExpansionAtLeast
   (ZigZagConstruction.graph k) (1 / (8 * (ZigZagConstruction.degree : ℚ))) := by
   rw [Family.graph_eq]
   apply Relabel.expansion_comap
@@ -69,7 +69,7 @@ conclusion: Lax920634.ExpansionTreewidth.order_le_treewidth
 ---
 Small components after deletion force a large deletion set. Connected sets containing more than half the vertices form a bramble, and tree Helly supplies a bag meeting every member.
 -/
-theorem ExpansionTreewidth_order_le_treewidth {n : ℕ} (G : SimpleGraph (Fin n)) (d : ℕ) (hd : 0 < d)
+lemma ExpansionTreewidth_order_le_treewidth {n : ℕ} (G : SimpleGraph (Fin n)) (d : ℕ) (hd : 0 < d)
     (hdegree : EdgeExpansion.IsSubcubic G)
     (hex : EdgeExpansion.HasEdgeExpansionAtLeast G (1 / (8 * (d : ℚ)))) :
   n ≤ (24 * d + 1) * (Lax228581.Treewidth.treewidth G + 1) := by
@@ -81,7 +81,7 @@ conclusion: Lax920634.ExplicitTreewidth.linear_treewidth
 ---
 Apply the expansion-to-treewidth inequality to the proved degree and expansion bounds of the same executable graph.
 -/
-theorem ExplicitTreewidth_linear_treewidth (k : ℕ) : ZigZagConstruction.order k ≤
+lemma ExplicitTreewidth_linear_treewidth (k : ℕ) : ZigZagConstruction.order k ≤
   (24 * ZigZagConstruction.degree + 1) *
     (Lax228581.Treewidth.treewidth (ZigZagConstruction.graph k) + 1) := by
   exact ExpansionTreewidth.order_le_treewidth _ ZigZagConstruction.degree
@@ -137,7 +137,7 @@ conclusion: Lax920634.ConstructionSize.size_bounds
 The bounded level scan reaches the first sufficiently large regular tower
 member. The preceding level was below twice the request, bounding overshoot.
 -/
-theorem ConstructionSize_size_bounds (n : ℕ) :
+lemma ConstructionSize_size_bounds (n : ℕ) :
     n ≤ ZigZagConstruction.order (GraphEncoding.selectedLevel n) ∧
     ZigZagConstruction.order (GraphEncoding.selectedLevel n) ≤
       (2 * ZigZagConstruction.degree * SeedSearch.seedDegree ^ 4) * (n + 1) :=

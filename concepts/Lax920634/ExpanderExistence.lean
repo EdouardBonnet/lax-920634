@@ -18,10 +18,12 @@ the level-selection algorithm keeps the excess within a fixed constant factor.
 
 namespace Lax920634.ExpanderExistence
 
+open ZigZagConstruction EdgeExpansion
+
 /-- There are arbitrarily large finite simple subcubic expanders with one fixed constant. -/
 axiom exists_subcubic_expander (lower : ℕ) :
   ∃ n : ℕ, ∃ G : SimpleGraph (Fin n), lower ≤ n ∧
-    EdgeExpansion.IsSubcubic G ∧
-    EdgeExpansion.HasEdgeExpansionAtLeast G (1 / (8 * (ZigZagConstruction.degree : ℚ)))
+    IsSubcubic G ∧
+    HasEdgeExpansionAtLeast G (1 / (8 * (degree : ℚ)))
 
 end Lax920634.ExpanderExistence

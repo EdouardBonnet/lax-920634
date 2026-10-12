@@ -84,7 +84,7 @@ The zig-zag product is due to Reingold, Vadhan, and Wigderson. The tower-table
 and machine-model proofs are reused from the registered Lax323828 development,
 including contributions by Bolton Bailey and Samuel Schlesinger.
 -/
-theorem polynomial_time : Nonempty (Turing.TM2ComputableInPolyTime id id construct) := by
+lemma polynomial_time : Nonempty (Turing.TM2ComputableInPolyTime id id construct) := by
   have hf : construct ∈ FP := mem_FP_of_eq (SeedGraph.finBase.famTableFn_mem_FP (2 * Polynomial.X))
     (fun z => (construct_eq z).symm)
   exact Lax323828Proofs.RegisteredBridge.FP_registered_computer hf

@@ -30,12 +30,16 @@ or word width are built into the program.
 
 namespace Lax920634.LinearConstruction
 
+open ZigZagConstruction Lax808846.Ram
+open GraphEncoding (selectedLevel)
+open WordEncoding (construct)
+
 /-- A uniform deterministic RAM constructs the precise family in linear output time. -/
-axiom linear_time : ∃ (program : Lax808846.Ram.Program) (timeConstant wordConstant : ℕ),
+axiom linear_time : ∃ (program : Program) (timeConstant wordConstant : ℕ),
   0 < timeConstant ∧ 0 < wordConstant ∧
   ∀ (n w : ℕ),
-    wordConstant * (ZigZagConstruction.order (GraphEncoding.selectedLevel n) + 1) ≤ 2 ^ w →
-    ∃ t ≤ timeConstant * (ZigZagConstruction.order (GraphEncoding.selectedLevel n) + 1),
-      Lax808846.Ram.RunsTo w program [n] (WordEncoding.construct n) t
+    wordConstant * (order (selectedLevel n) + 1) ≤ 2 ^ w →
+    ∃ t ≤ timeConstant * (order (selectedLevel n) + 1),
+      RunsTo w program [n] (construct n) t
 
 end Lax920634.LinearConstruction

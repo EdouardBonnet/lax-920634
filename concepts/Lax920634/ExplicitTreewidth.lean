@@ -4,7 +4,7 @@ import Lax228581.Treewidth
 /-!
 ---
 title: The Explicit Family Has Linear Treewidth
-type: theorem
+type: lemma
 ---
 The specified graphs satisfy
 $N_k\le(24d+1)(\operatorname{tw}(H_k)+1)$, where $d=D^2$ is the fixed
@@ -20,9 +20,11 @@ enough size request.
 
 namespace Lax920634.ExplicitTreewidth
 
+open ZigZagConstruction Lax228581.Treewidth
+
 /-- The specified graph order is bounded linearly by treewidth plus one. -/
-axiom linear_treewidth (k : ℕ) : ZigZagConstruction.order k ≤
-  (24 * ZigZagConstruction.degree + 1) *
-    (Lax228581.Treewidth.treewidth (ZigZagConstruction.graph k) + 1)
+axiom linear_treewidth (k : ℕ) : order k ≤
+  (24 * degree + 1) *
+    (treewidth (graph k) + 1)
 
 end Lax920634.ExplicitTreewidth

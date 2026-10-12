@@ -3,7 +3,7 @@ import Lax920634.ZigZagConstruction
 /-!
 ---
 title: The Explicit Subcubic Family Expands
-type: theorem
+type: lemma
 ---
 Put $D=120^{5760000}$ and $d=D^2$. Every specified graph $H_k$ has edge
 expansion at least $1/(8d)$, uniformly in the level.
@@ -17,8 +17,10 @@ checks the canonical vertex numbering.
 
 namespace Lax920634.ExplicitExpansion
 
+open ZigZagConstruction EdgeExpansion
+
 /-- The specified deterministic family has a uniform positive edge-expansion constant. -/
-axiom expansion (k : ℕ) : EdgeExpansion.HasEdgeExpansionAtLeast
-  (ZigZagConstruction.graph k) (1 / (8 * (ZigZagConstruction.degree : ℚ)))
+axiom expansion (k : ℕ) : HasEdgeExpansionAtLeast
+  (graph k) (1 / (8 * (degree : ℚ)))
 
 end Lax920634.ExplicitExpansion

@@ -28,6 +28,8 @@ coordinates increase output size only polynomially.
 
 namespace Lax920634.GraphEncoding
 
+open SeedSearch ZigZagConstruction
+
 /-- The bounded level-selection loop, carrying the level and current regular order. -/
 def levelAfter (b n : ℕ) : ℕ → ℕ × ℕ → ℕ × ℕ
   | 0, p => p
@@ -37,7 +39,7 @@ def levelAfter (b n : ℕ) : ℕ → ℕ × ℕ → ℕ × ℕ
 
 /-- The level selected for a requested order, after at most `2*n` advances. -/
 def selectedLevel (n : ℕ) : ℕ :=
-  (levelAfter (SeedSearch.seedDegree ^ 4) n (2 * n) (0, SeedSearch.seedDegree ^ 4)).1
+  (levelAfter (seedDegree ^ 4) n (2 * n) (0, seedDegree ^ 4)).1
 
 /-- A Boolean serialized as an empty or singleton-empty bracketed list. -/
 def encodeBit (b : Bool) : List Bool :=
@@ -53,8 +55,8 @@ def encodeRecord (p : ℕ × ℕ) : List Bool :=
 
 /-- The paired-port destination of each vertex, in canonical row order. -/
 def records (k : ℕ) : List (ℕ × ℕ) :=
-  (List.range (ZigZagConstruction.order k)).map fun j =>
-    ZigZagConstruction.rotation k (j / ZigZagConstruction.degree, j % ZigZagConstruction.degree)
+  (List.range (order k)).map fun j =>
+    rotation k (j / degree, j % degree)
 
 /-- The binary table encoding of the entire subcubic graph at a specified level. -/
 def encoding (k : ℕ) : List Bool := false :: ((records k).flatMap encodeRecord ++ [true])

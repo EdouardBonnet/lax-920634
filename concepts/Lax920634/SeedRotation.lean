@@ -21,6 +21,8 @@ reverse order. The long exponent and seed size are fixed constants.
 
 namespace Lax920634.SeedRotation
 
+open SeedSearch
+
 /-- Number forward and inverse permutation darts by integers below sixty. -/
 def permutationLabels : (Fin 30 × Bool) ≃ Fin 60 :=
   (Equiv.prodCongr (Equiv.refl _) finTwoEquiv.symm).trans finProdFinEquiv
@@ -33,9 +35,9 @@ def lazyLabels : ((Fin 30 × Bool) ⊕ Fin 60) ≃ Fin 120 :=
 def lazyRotation (n : ℕ) (p : Fin n × Fin 120) : Fin n × Fin 120 :=
   match lazyLabels.symm p.2 with
   | Sum.inl (i, false) =>
-    (SeedSearch.selectedTable n i p.1, lazyLabels (Sum.inl (i, true)))
+    (selectedTable n i p.1, lazyLabels (Sum.inl (i, true)))
   | Sum.inl (i, true) =>
-    (SeedSearch.inverse (SeedSearch.selectedTable n i) p.1,
+    (inverse (selectedTable n i) p.1,
       lazyLabels (Sum.inl (i, false)))
   | Sum.inr j => (p.1, lazyLabels (Sum.inr j))
 
@@ -60,8 +62,8 @@ def powerRotation {n d : ℕ} (R : Fin n × Fin d → Fin n × Fin d)
     (R (walkAt R t p.1 s (Fin.rev j).val, s (Fin.rev j))).2))
 
 /-- The fixed seed's rotation map, after lazy powering. -/
-def rotation : Fin SeedSearch.seedOrder × Fin SeedSearch.seedDegree →
-    Fin SeedSearch.seedOrder × Fin SeedSearch.seedDegree :=
-  powerRotation (lazyRotation SeedSearch.seedOrder) SeedSearch.poweringExponent
+def rotation : Fin seedOrder × Fin seedDegree →
+    Fin seedOrder × Fin seedDegree :=
+  powerRotation (lazyRotation seedOrder) poweringExponent
 
 end Lax920634.SeedRotation

@@ -29,18 +29,20 @@ numbered zig-zag tower and verifies every returned matching endpoint's bounds.
 
 namespace Lax920634.ZigZagConstruction
 
+open SeedSearch
+
 /-- The fixed degree of each regular graph in the tower. -/
-def degree : ℕ := SeedSearch.seedDegree ^ 2
+def degree : ℕ := seedDegree ^ 2
 
 /-- The number of vertices in the regular graph at a given level. -/
-def baseOrder (k : ℕ) : ℕ := (SeedSearch.seedDegree ^ 4) ^ (k + 1)
+def baseOrder (k : ℕ) : ℕ := (seedDegree ^ 4) ^ (k + 1)
 
 /-- The number of vertices after path replacement at a given level. -/
 def order (k : ℕ) : ℕ := baseOrder k * degree
 
 /-- A total numerical query to the fixed seed's edge rotation. -/
 def seedValue (p : ℕ × ℕ) : ℕ × ℕ :=
-  if h : p.1 < SeedSearch.seedOrder ∧ p.2 < SeedSearch.seedDegree then
+  if h : p.1 < seedOrder ∧ p.2 < seedDegree then
     let r := SeedRotation.rotation (⟨p.1, h.1⟩, ⟨p.2, h.2⟩)
     (r.1.val, r.2.val)
   else (0, 0)
@@ -48,15 +50,15 @@ def seedValue (p : ℕ × ℕ) : ℕ × ℕ :=
 /-- The regular tower's rotation, computed by squaring and zig-zag steps. -/
 def rotation : ℕ → ℕ × ℕ → ℕ × ℕ
   | 0, (v, i) =>
-      let p₀ := seedValue (v, i / SeedSearch.seedDegree)
-      let p₁ := seedValue (p₀.1, i % SeedSearch.seedDegree)
-      (p₁.1, p₀.2 + SeedSearch.seedDegree * p₁.2)
+      let p₀ := seedValue (v, i / seedDegree)
+      let p₁ := seedValue (p₀.1, i % seedDegree)
+      (p₁.1, p₀.2 + seedDegree * p₁.2)
   | k + 1, (v, i) =>
-      let p := seedValue (v % SeedSearch.seedDegree ^ 4, i / SeedSearch.seedDegree)
-      let q₀ := rotation k (v / SeedSearch.seedDegree ^ 4, p.1 / degree)
+      let p := seedValue (v % seedDegree ^ 4, i / seedDegree)
+      let q₀ := rotation k (v / seedDegree ^ 4, p.1 / degree)
       let q₁ := rotation k (q₀.1, p.1 % degree)
-      let r := seedValue (q₀.2 + degree * q₁.2, i % SeedSearch.seedDegree)
-      (r.1 + SeedSearch.seedDegree ^ 4 * q₁.1, p.2 + SeedSearch.seedDegree * r.2)
+      let r := seedValue (q₀.2 + degree * q₁.2, i % seedDegree)
+      (r.1 + seedDegree ^ 4 * q₁.1, p.2 + seedDegree * r.2)
 
 /-- The matching endpoint of a port, in the canonical vertex numbering. -/
 def matchingNeighbor (k v : ℕ) : ℕ :=
